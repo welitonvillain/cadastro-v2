@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
                         <SearchIcon />
                     </SearchBox>
                     <div className="select-container">
-                        <Select name="search" id="my-id" placeholder={"Que projeto está procurando?"}/>
+                        <Select type="input" name="search" id="my-id" placeholder={"Que projeto está procurando?"}/>
                     </div>
 
                     <UserBox>

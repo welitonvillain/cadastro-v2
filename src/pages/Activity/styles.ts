@@ -66,3 +66,17 @@ export const Content = styled.div`
     padding: 8px;
 `;
 
+export const DaysContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 24px;
+
+    span {
+        font-weight: 600;
+        font-size: 16px;
+        color: #293845;
+        margin-bottom: 16px;
+    }
+`;
+

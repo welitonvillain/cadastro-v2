@@ -1,12 +1,22 @@
 import React from 'react';
-import ReactSelect, { OptionTypeBase, Props as SelectProps } from 'react-select';
+import ReactSelect, { 
+    OptionTypeBase, 
+    Props as SelectProps,
+    ValueType,
+    ActionMeta
+} from 'react-select';
 
-import { Styles } from './styles';
+import { NavBarStyle, ActivityStyle } from './styles';
+
+type OptionType = { label: string; value: string };
+type OnChange = (value: ValueType<OptionType>, actionMeta: ActionMeta<OptionType>) => void;
 
 interface Props extends SelectProps<OptionTypeBase> {
+    type: 'select' | 'input';
     name: string;
     id: string;
     placeholder?: string;
+    
 }
 
 const options = [
@@ -18,11 +28,12 @@ const options = [
     { value: 'Construção', label: 'Construção', color: '#5B91CC' },
 ]
 
-const Select: React.FC<Props> = ({ name, id, placeholder, ...rest }) => {
+const Select: React.FC<Props> = ({ type, name, id, placeholder = "", ...rest }) => {
     return (
         <ReactSelect
-            styles={Styles}
+            styles={type === 'select' ? ActivityStyle : NavBarStyle}
             options={options}
+            OnC
             placeholder={placeholder}
             noOptionsMessage={() => "Desculpe, nada foi encontrado!"}
             {...rest}

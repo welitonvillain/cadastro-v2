@@ -74,6 +74,7 @@ const Register: React.FC<IRegister> = ({ uuid }) => {
                 type="text" 
                 name={"description"} 
                 placeholder={"Descrição da atividade"}
+                defaultValue="ola"
             />
 
             <div className="delete-container">

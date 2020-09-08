@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { subMonths, addMonths, getDate } from 'date-fns';
+import { subMonths, addMonths, getMonth, getDate } from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
 import { Container, Header, Content, Days, Day, Activities} from './styles';
@@ -11,19 +11,41 @@ import Register from '../../components/Register';
 const Activity: React.FC = () => {
     const [month, setMonth] = useState(getDataOfMonth(new Date()));
     const [day, setDay] = useState(month.days[getDate(new Date()) - 1]);
+    const [registers, setRegisters] = useState([{ id: 1, uuid: 'asdasasdasd'}]);
 
     const handleChangeMonth = useCallback((to: 'forward' | 'backward') => {
-        to === 'forward' 
-            ? setMonth(getDataOfMonth(addMonths(new Date(month.year, month.month), 1))) 
-            : setMonth(getDataOfMonth(subMonths(new Date(month.year, month.month), 1)));
-        
-        handleChangeDay(month.days[0].number);
-        console.log(month);
+      if (to === 'forward') {
+        const data = getDataOfMonth(addMonths(new Date(month.year, month.month), 1));
+        setDay(data.days[0]);
+        setMonth(data);
+      }
+
+      if (to === 'backward') {
+        const data = getDataOfMonth(subMonths(new Date(month.year, month.month), 1));
+        setDay(data.days[0]);
+        setMonth(data);
+      }
+
     }, [month]);
 
     const handleChangeDay = useCallback((to: number) => {
-        setDay(month.days[to - 1]);
+      let days = month.days;
+      // Define o dia atual como false para o caso de mudança de mês
+      days[new Date().getDate() - 1].selected = false;
+      // Define o dia selecionado como false
+      days[day.number - 1].selected = false;
+      // Define o novo dia como true
+      days[to - 1].selected = true;
+
+      month.days = days;
+
+      setMonth(month);
+      setDay(month.days[to - 1]);
     }, [day]);
+
+    const handleIncrementRegister = () => {
+      setRegisters([...registers, { id: 2, uuid: 'kakakakakaka'}]);
+    }
 
 
     return (
@@ -33,7 +55,7 @@ const Activity: React.FC = () => {
                         <button onClick={() => handleChangeMonth('backward')}>
                             <AiOutlineLeft size={18}/>
                         </button>
-                        
+
                         <span>{month.name}</span>
 
                         <button onClick={() => handleChangeMonth('forward')}>
@@ -42,44 +64,40 @@ const Activity: React.FC = () => {
                     </div>
                 </Header>
                 <div className="wrapper-content">
-                    <Days>
-                        <div className="wrapper-days">
-                            { month.days.map((day) => {                              
-                                return (
-                                    <Day 
-                                        key={day.number}
-                                        onClick={() => handleChangeDay(day.number)}
-                                    >
-                                        {day.number}
-                                    </Day>
-                                );
-                            })}
-                        </div>
-                    </Days>
-                    <Content>
-                        <Activities>
-                        <span>{`${day.name}, ${day.number}`}</span>
-                            <Register uuid="hjasd857dasd"/>
-                        </Activities>         
-                    </Content>
-                    
-                </div>     
+                  <Days>
+                    <div className="wrapper-days">
+                        {month.days.map((day) => {
+                            return (
+                              <Day
+                                  key={day.number}
+                                  onClick={() => handleChangeDay(day.number)}
+                                  isSelected={day.selected}
+                              >
+                                  {day.number}
+                              </Day>
+                            );
+                        })}
+                    </div>
+                  </Days>
+                  <Content>
+                    <Activities>
+                      <span>{`${day.name}, ${day.number}`}</span>
+                      {registers.map((register) => {
+                        return (
+                          <Register
+                            key={register.id}
+                            uuid={register.uuid}
+                            date={day.dateISO}
+                            increment={handleIncrementRegister}
+                          />
+                        );
+                      })
+                      }
+                    </Activities>
+                  </Content>
+                </div>
         </Container>
     );
 };
 
 export default Activity;
-
-/* 
-    <DaysContainer>
-                    <span>Quarta-feira, 27</span>
-                    <Register uuid="a5asd312a3s"/>
-                    <Register uuid="a5asd312a3s"/>
-                </DaysContainer>
-
-                <DaysContainer>
-                    <span>Quinta-feira, 28</span>
-                    <Register uuid="a5asd312a3s"/>
-                    <Register uuid="a5asd312a3s"/>
-                </DaysContainer>
-*/

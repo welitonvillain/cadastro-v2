@@ -20,11 +20,11 @@ export const Container = styled.div`
 
     display: flex;
     justify-content: space-between;
-    height: 50px;
+    height: 40px;
     width: 100vw;
 
     background-color: #f2f2f2;
-    
+
     box-shadow: 0 2px 4px #ddd;
 `;
 
@@ -32,14 +32,14 @@ export const Menu = styled.div<MenuProps>`
     display: flex;
     align-items: center;
     width: 240px;
-    height: 50px;
+    height: 40px;
 
     .menu-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 50px;
-        width: 50px;
+        height: 40px;
+        width: 40px;
         border-right: 1px solid #e1e1e1;
 
         transition: margin-left 0.2s ease-in;
@@ -53,19 +53,19 @@ export const Menu = styled.div<MenuProps>`
         }
     }
 
-    ${(props) => 
+    ${(props) =>
         props.isOpen && css`
             .menu-container {
-                margin-left: 190px;
+                margin-left: 200px;
             }
-            
+
         `
     }
 `;
 
 export const MenuIcon = styled(MdMenu)`
-    height: 28px;
-    width: 28px;
+    height: 24px;
+    width: 24px;
     color: #293845;
     transition: color .2s ease;
 `;
@@ -80,7 +80,7 @@ export const Center = styled.div`
     span {
         margin: 0 auto;
         width: 200px;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         color: #293845;
     }
@@ -91,20 +91,18 @@ export const Search = styled.div<SearchProps>`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100px;
-    height: 50px;
+    width: 80px;
+    height: 40px;
 
     transition: width 0.2s ease-in;
 
     .select-container {
         display: none;
         width: 350px;
-        height: 50px;
-        padding: 8px;
+        height: 40px;
+        padding: 4px;
         justify-content: center;
         align-items: center;
-
-        
     }
 
     ${(props) =>
@@ -118,7 +116,7 @@ export const Search = styled.div<SearchProps>`
             `
             :
             css`
-                width: 100px;
+                width: 80px;
 
                 .select-container {
                     display: none;
@@ -132,8 +130,8 @@ export const SearchBox = styled.div`
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-right: 1px solid #e1e1e1;
 
     cursor: pointer;
@@ -146,8 +144,8 @@ export const SearchBox = styled.div`
 `;
 
 export const SearchIcon = styled(MdSearch)`
-    height: 28px;
-    width: 28px;
+    height: 24px;
+    width: 24px;
     color: #293845;
     transition: color .2s ease;
 `;
@@ -156,12 +154,12 @@ export const UserBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 
     .user-icon {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
 
         background-color: #999;
@@ -170,7 +168,7 @@ export const UserBox = styled.div`
 
 export const SlideBar = styled.div<SlideBarProps>`
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: -240px;
     z-index: 100;
 
@@ -186,7 +184,7 @@ export const SlideBar = styled.div<SlideBarProps>`
 
     transition: left 0.2s ease-in;
 
-    ${(props) => 
+    ${(props) =>
         props.isOpen && css`
             left: 0;
         `

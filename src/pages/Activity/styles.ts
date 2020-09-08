@@ -1,11 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { lighten, darken } from 'polished';
+
+interface IDay {
+  isSelected: boolean;
+}
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 40px;
     height: 100vh;
     width: 100vw;
 
@@ -15,7 +19,7 @@ export const Container = styled.div`
         display: flex;
         flex-direction: row;
         height: 100%;
-        width: 1496px;
+        width: 1280px;
     }
 `;
 
@@ -37,7 +41,7 @@ export const Header = styled.div`
         width: 600px;
 
         span {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #293845;
         }
@@ -49,7 +53,7 @@ export const Header = styled.div`
             border-radius: 4px;
 
             background-color: #e1e1e1;
-            
+
             transition: border 0.2s;
 
             svg {
@@ -73,8 +77,8 @@ export const Days = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-    height: 500px;
-    min-width: 100px;
+    height: 70%;
+    min-width: 80px;
     padding: 4px 0;
 
     overflow-y: hidden;
@@ -88,10 +92,10 @@ export const Days = styled.div`
         border-radius: 4px;
         background-color: #f2f2f2;
     }
-    
+
     &::-webkit-scrollbar-thumb {
         background-color: #ccc;
-        border-radius: 4px; 
+        border-radius: 4px;
     }
 
     &:hover {
@@ -112,7 +116,7 @@ export const Days = styled.div`
         color: #f2f2f2;
     background-color: ${lighten(0, '#D3455B')};
     }
-    
+
     .finished {
         color: #f2f2f2;
         background-color: ${lighten(0, '#169873')};
@@ -124,13 +128,13 @@ export const Days = styled.div`
     }
 `;
 
-export const Day = styled.div`
+export const Day = styled.div<IDay>`
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 60px;
     width: 60px;
-    
+
     border: 2px solid transparent;
     border-radius: 4px;
 
@@ -144,12 +148,20 @@ export const Day = styled.div`
 
     & + div {
         margin-top: 4px;
-    } 
+    }
 
     &:hover {
         border-color: #536DFE;
         color: #536DFE;
         margin-left: 12px;
+    }
+
+    ${(props) =>
+        props.isSelected && css`
+          margin-left: 12px;
+          border-color: #536DFE;
+          color: #536DFE,
+        `
     }
 `;
 
@@ -170,7 +182,7 @@ export const Activities = styled.div`
 
     span {
         font-weight: 600;
-        font-size: 16px;
+        font-size: 14px;
         color: #293845;
         margin-bottom: 16px;
     }

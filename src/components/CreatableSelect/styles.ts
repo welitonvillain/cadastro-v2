@@ -29,10 +29,10 @@ export const NavBarStyle: StylesConfig = {
         width: '100%',
         padding: '0 8px',
         boxShadow: 'none',
-        backgroundColor: props.isFocused ? 
+        backgroundColor: props.isFocused ?
             '#f2f2f2'
             : '#e1e1e1',
-        border: props.isFocused ? 
+        border: props.isFocused ?
             '2px solid #536DFE'
             : '2px solid #e1e1e1',
 
@@ -53,6 +53,13 @@ export const NavBarStyle: StylesConfig = {
         alignItems: 'center',
     }),
 
+
+    placeholder: styles => ({
+      ...styles,
+      color: '#999',
+      fontWeight: 400,
+    }),
+
     menu: styles => ({
         ...styles,
         background: '#f2f2f2',
@@ -62,7 +69,7 @@ export const NavBarStyle: StylesConfig = {
     option: (styles, props) => ({
         ...styles,
         fontWeight: 600,
-        
+
         backgroundColor: props.isDisabled
         ? '#f2f2f2'
         : props.isSelected
@@ -127,15 +134,15 @@ export const ActivityStyle: StylesConfig = {
         boxShadow: 'none',
         backgroundColor: props.hasValue ? '#536DFE' :
             props.isFocused ? '#f2f2f2' : '#e1e1e1',
-            
-        border: props.hasValue ? 
+
+        border: props.hasValue ?
             '2px solid #536DFE'
             : '2px solid #e1e1e1',
 
         transition: 'all 0.2s',
 
-        '&:hover': {
-            borderColor: props.hasValue ? 
+        ':hover': {
+            borderColor: props.hasValue ?
             '2px solid #536DFE'
             : '2px solid #e1e1e1',
 
@@ -160,7 +167,7 @@ export const ActivityStyle: StylesConfig = {
     option: (styles, props) => ({
         ...styles,
         fontWeight: 600,
-        
+
         backgroundColor: props.isDisabled
         ? '#f2f2f2'
         : props.isSelected

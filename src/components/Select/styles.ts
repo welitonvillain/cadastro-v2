@@ -4,8 +4,10 @@ import { lighten } from 'polished';
 export const NavBarStyle: StylesConfig = {
     container: styles => ({
         ...styles,
-        height: '36px',
+        height: '32px',
         width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     }),
 
     dropdownIndicator: styles => ({
@@ -25,14 +27,15 @@ export const NavBarStyle: StylesConfig = {
         {
         ...styles,
         cursor: 'pointer',
-        minHeight: '36px',
+        minHeight: '32px',
+        maxHeight: '32px',
         width: '100%',
         padding: '0 8px',
         boxShadow: 'none',
-        backgroundColor: props.isFocused ? 
+        backgroundColor: props.isFocused ?
             '#f2f2f2'
             : '#e1e1e1',
-        border: props.isFocused ? 
+        border: props.isFocused ?
             '2px solid #536DFE'
             : '2px solid #e1e1e1',
 
@@ -46,7 +49,7 @@ export const NavBarStyle: StylesConfig = {
 
     valueContainer: styles => ({
         ...styles,
-        height: '36px',
+        height: '28px',
         width: '100%',
         padding: '0',
         justifyContent: 'center',
@@ -62,7 +65,7 @@ export const NavBarStyle: StylesConfig = {
     option: (styles, props) => ({
         ...styles,
         fontWeight: 600,
-        
+
         backgroundColor: props.isDisabled
         ? '#f2f2f2'
         : props.isSelected
@@ -89,8 +92,14 @@ export const NavBarStyle: StylesConfig = {
     }),
 
     input: styles => ({
-        ...styles,
+      maxHeight: '30px'
     }),
+
+    singleValue: styles => ({
+      ...styles,
+      color: '#293845',
+    }),
+
 }
 
 
@@ -127,15 +136,15 @@ export const ActivityStyle: StylesConfig = {
         boxShadow: 'none',
         backgroundColor: props.hasValue ? '#536DFE' :
             props.isFocused ? '#f2f2f2' : '#e1e1e1',
-            
-        border: props.hasValue ? 
+
+        border: props.hasValue ?
             '2px solid #536DFE'
             : '2px solid #e1e1e1',
 
         transition: 'all 0.2s',
 
-        '&:hover': {
-            borderColor: props.hasValue ? 
+        ':hover': {
+            borderColor: props.hasValue ?
             '2px solid #536DFE'
             : '2px solid #e1e1e1',
 
@@ -160,7 +169,7 @@ export const ActivityStyle: StylesConfig = {
     option: (styles, props) => ({
         ...styles,
         fontWeight: 600,
-        
+
         backgroundColor: props.isDisabled
         ? '#f2f2f2'
         : props.isSelected

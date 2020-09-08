@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
 
 export const Container = styled.div`
     display: grid;
-    grid-template-columns: 0.4fr 0.4fr 2fr 1fr 1fr 0.2fr;
-    grid-gap: 4px;
+    grid-template-columns: 0.3fr 0.3fr 2fr 0.8fr 1fr 0.1fr;
+    grid-gap: 2px;
     justify-content: center;
     align-items: center;
     height: 40px;
@@ -20,7 +19,7 @@ export const Container = styled.div`
         border-radius: 4px;
         color: #666;
         background-color: #e1e1e1;
-        
+
         &::placeholder {
             font-weight: 400;
             color: #999;
@@ -58,7 +57,7 @@ export const Container = styled.div`
                 color: #f2f2f2;
             }
         }
-    } 
+    }
 `;
 
 /**
